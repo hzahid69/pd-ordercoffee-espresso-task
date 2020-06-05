@@ -16,9 +16,15 @@ import org.junit.Test;
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.matcher.CursorMatchers.withRowString;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
+import static androidx.test.espresso.matcher.ViewMatchers.isSelected;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.anything;
 
-public class EspressoWorkshopTest {
+public class EspressoWorkshopTest  {
 
 
     @Rule
@@ -29,15 +35,18 @@ public class EspressoWorkshopTest {
 
     @Test
     public void CloseOnboardingscreen() {
-        // Type text and then press the button.
         onView(withId(R.id.close_button)).perform(click());
         onView(withId(R.id.more_espresso)).perform(click());
+        onView(withId(R.id.more_espresso)).perform(click());
+        onView(withId(R.id.chocolate)).perform(click());
+        onView(withId(R.id.milk_type)).perform(click());
+        onData(anything()).atPosition(3).perform(click());
+        onView(withText("Steamed")).perform(click());
+        onView(withId(R.id.review_order_button)).perform(click());
+        onView(withId(R.id.name_text_box)).perform(typeText("Hassan"));
+        onView(withId(R.id.custom_order_name_box)).perform(typeText("MyFirstOrder"));
+        onView(withId(R.id.mail_order_button)).perform(click());
+
+
     }
-//    @Test
-//    public void PlaceandOrder(){
-//     //onView(withId(R.id.more_espresso)).perform(doubleClick());
-//     //onView(withid(R.id.more_espresso)).perform(click());
-//     onView(withId(R.id.chocolate)).perform(click());
-//     onData(withId(R.id.milk_options_container)).atPosition(3).perform(click());
-//    }
 }
